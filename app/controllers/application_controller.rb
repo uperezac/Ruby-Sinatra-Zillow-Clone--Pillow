@@ -22,7 +22,7 @@ class ApplicationController < Sinatra::Base
   post '/listing/newlisting' do
     picture = params[:picture_url]
     address = params[:addy]
-    city = params[:city.name]
+    city = params[:city_id]
     zipcode = params[:zipcode]
     buy = params[:to_buy]
     rent = params[:to_rent]
@@ -33,9 +33,9 @@ class ApplicationController < Sinatra::Base
     built = params[:built]
     laundry = params[:laundry]
     superintendent = params[:super]
-    agent = params[:agent]
+    agent = params[:agent_id]
 
-    listing = Listing.create(addy:address, picture_url:picture, bed:bedrooms, bath:bathrooms, zipcode:zipcode,built:built, to_buy:buy to_rent:buy,laundry:,price: 2506,sqrft: 729,super:superintendent,city_id:city,agent_id:agent)
+    listing = Listing.create(picture_url:picture, addy:address, city_id:city, zipcode:zipcode, , to_buy:buy, to_rent:buy, price:price, sqrft:sqrft, bed:bedrooms, bath:bathrooms,built:built,laundry:, super:superintendent, agent_id:agent)
 
     {
       success:true,
@@ -44,4 +44,28 @@ class ApplicationController < Sinatra::Base
 
   end
 
+  delete '/listing/:id' do
+     listing = Listing.find(params[:id])
+        Listing.all.to_json
+    end
+
+    patch '/listing/:id' do
+       update_listing = Listing.find(params[:id])
+        update_listing.update(picture: params[:picture_url],
+                      address: params[:addy], 
+                      city: params[:city_id],
+                      zipcode: params[:zipcode],
+                      buy: params[:to_buy],
+                      rent: params[:to_rent],
+                      price: params[:price],
+                      sqrft: params[:sqrft],
+                      bedrooms: params[:bed],
+                      bathrooms: params[:bath],
+                      built: params[:built],
+                      laundry: params[:laundry],
+                      superintendent: params[:super],
+                      agent: params[:agent_id])
+
+          Blog.all.to_json
+      end
 end

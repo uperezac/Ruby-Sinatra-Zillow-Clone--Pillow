@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_02_191941) do
+ActiveRecord::Schema.define(version: 2022_08_03_193234) do
 
   create_table "agents", force: :cascade do |t|
     t.string "first_name"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2022_08_02_191941) do
     t.integer "agent_id"
     t.integer "city_id"
     t.integer "zipcode"
+    t.text "picture_url"
   end
 
 end

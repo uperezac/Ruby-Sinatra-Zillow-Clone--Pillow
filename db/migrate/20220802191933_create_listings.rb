@@ -1,6 +1,7 @@
 class CreateListings < ActiveRecord::Migration[6.1]
   def change
     create_table :listings do |t|
+      t.text :picture_url
       t.integer :price
       t.integer :built
       t.integer :sqrft

@@ -4,7 +4,7 @@ class ApplicationController < Sinatra::Base
       "Hello World!"
   end
 
-  get '/listing' do 
+  get "/listing" do 
       listings_all = Listing.all
       listings_all.to_json
   end
@@ -47,10 +47,10 @@ class ApplicationController < Sinatra::Base
     bathrooms = params[:bath]
     built = params[:built]
     laundry = params[:laundry]
-    superintendent = params[:super]
+    superintendent = params[:superintendent]
     agent = params[:agent_id]
 
-    listing = Listing.create(picture_url:picture, addy:address, city_id:city, zipcode:zipcode, to_buy:buy, to_rent:buy, price:price, sqrft:sqrft, bed:bedrooms, bath:bathrooms, built:built, laundry:laundry, super:superintendent, agent_id:agent)
+    listing = Listing.create(picture_url:picture, addy:address, city_id:city, zipcode:zipcode, to_buy:buy, to_rent:buy, price:price, sqrft:sqrft, bed:bedrooms, bath:bathrooms, built:built, laundry:laundry, superintendent:superintendent, agent_id:agent)
 
     {
       success:true,
@@ -82,6 +82,6 @@ class ApplicationController < Sinatra::Base
                       superintendent: params[:super],
                       agent: params[:agent_id])
 
-          Blog.all.to_json
+          Listing.all.to_json
       end
 end

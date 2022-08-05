@@ -8,7 +8,7 @@ class CreateListings < ActiveRecord::Migration[6.1]
       t.integer :bath
       t.integer :bed
       t.boolean :laundry
-      t.boolean :super
+      t.boolean :superintendent
       t.boolean :to_buy
       t.boolean :to_rent
       t.string :addy

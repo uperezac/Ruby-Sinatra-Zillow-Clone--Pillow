@@ -62,10 +62,9 @@ class ApplicationController < Sinatra::Base
   delete '/listing/:id' do
      listings = Listing.find(params[:id])
       listings.destroy
-        listings.to_json
     end
 
-    patch '/listing/:id' do
+    patch '/listingdelete/:id' do
        update_listing = Listing.find(params[:id])
         update_listing.update(picture: params[:picture_url],
                       address: params[:addy], 
